@@ -2,9 +2,8 @@ import { useRef } from "react";
 import { useLoader, useFrame, useThree } from "react-three-fiber";
 import { TextureLoader } from "three";
 import "./ImageShaderMaterial";
-function lerp(v0, v1, t) {
-  return v0 * (1 - t) + v1 * t;
-}
+import * as THREE from "three";
+
 const MyImg = ({
   mouse,
 }: {
@@ -13,6 +12,7 @@ const MyImg = ({
   };
 }) => {
   const ref = useRef<any>();
+  const planeRef = useRef<any>();
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   console.log(aspect);
@@ -21,10 +21,13 @@ const MyImg = ({
     "/img/displacementimg.png",
   ]);
 
-  useFrame(() => {});
+  useFrame(() => {
+    planeRef.current.rotation.x = mouse.current[0] * -0.0001;
+    planeRef.current.rotation.y = mouse.current[1] * -0.0001;
+  });
   return (
-    <mesh position={[(viewport.width / aspect) * 0.9, 0, 0]}>
-      <planeBufferGeometry attach="geometry" args={[60, 60]} />
+    <mesh position={[(viewport.width / aspect) * 2, 0, 0]} ref={planeRef}>
+      <planeBufferGeometry attach="geometry" args={[30, 30]} />
       {/** For some reason typescript doesnt recoginize imageFadeMaterial, but it does work i promise */}
       {/*@ts-ignore*/}
       <imageFadeMaterial

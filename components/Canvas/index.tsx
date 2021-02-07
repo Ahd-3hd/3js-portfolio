@@ -15,7 +15,7 @@ const CanvasComponent = () => {
   return (
     <Canvas
       onMouseMove={onMouseMove}
-      camera={{ fov: 90, position: [0, 0, 80] }}
+      camera={{ fov: 60, position: [0, 0, 80] }}
       colorManagement={true}
     >
       <OrbitControls />
