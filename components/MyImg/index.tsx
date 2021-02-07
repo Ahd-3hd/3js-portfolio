@@ -14,18 +14,16 @@ const MyImg = ({
 }) => {
   const ref = useRef<any>();
   const { size, viewport } = useThree();
+  const aspect = size.width / viewport.width;
+  console.log(aspect);
   const [texture1, displacement] = useLoader(TextureLoader, [
     "/img/ahd.png",
     "/img/displacementimg.png",
   ]);
 
-  useFrame(() => {
-    // ref.current.progress += mouse.current[0] / 9000;
-    // ref.current.position.x = viewport.width;
-    console.log(viewport.width);
-  });
+  useFrame(() => {});
   return (
-    <mesh position={[(viewport.width * 10) / 50, 0, 0]}>
+    <mesh position={[(viewport.width / aspect) * 0.9, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[60, 60]} />
       {/** For some reason typescript doesnt recoginize imageFadeMaterial, but it does work i promise */}
       {/*@ts-ignore*/}
