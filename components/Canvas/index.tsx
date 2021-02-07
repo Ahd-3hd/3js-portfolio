@@ -18,11 +18,11 @@ const CanvasComponent = () => {
       camera={{ fov: 90, position: [0, 0, 80] }}
       colorManagement={true}
     >
-      {/* <OrbitControls /> */}
+      <OrbitControls />
       <Light />
       <Particles mouse={mouse} />
       <Suspense fallback={null}>
-        <MyImg />
+        <MyImg mouse={mouse} />
       </Suspense>
     </Canvas>
   );
