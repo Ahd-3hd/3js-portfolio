@@ -1,9 +1,16 @@
 import { useMemo, useRef } from "react";
-import { useFrame } from "react-three-fiber";
+import { useFrame, useThree } from "react-three-fiber";
 import * as THREE from "three";
-const Particles = () => {
+const Particles = ({
+  mouse,
+}: {
+  mouse: {
+    current: number[];
+  };
+}) => {
   const mesh = useRef<any>();
-
+  const { size, viewport } = useThree();
+  const aspect = size.width / viewport.width;
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   const particles = useMemo(() => {
@@ -21,6 +28,8 @@ const Particles = () => {
   }, []);
 
   useFrame(() => {
+    const mouseX = mouse.current[0] / aspect;
+    const mouseY = -mouse.current[1] / aspect;
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
       t = particle.t += speed / 10;
@@ -33,10 +42,12 @@ const Particles = () => {
         (particle.mx / 10) * a +
           xFactor +
           Math.cos((t / 10) * factor) +
+          mouseX * speed +
           (Math.sin(t * 1) * factor) / 10,
         (particle.my / 10) * b +
           yFactor +
           Math.sin((t / 10) * factor) +
+          mouseY * speed +
           (Math.cos(t * 2) * factor) / 10,
         (particle.my / 10) * b +
           zFactor +
@@ -45,6 +56,11 @@ const Particles = () => {
       );
       dummy.scale.set(s, s, s);
       dummy.rotation.set(s * 5, s * 5, s * 5);
+      // dummy.position.set(
+      //   (dummy.position.x + mouseX) * factor,
+      //   (dummy.position.y + mouseY) * factor,
+      //   0
+      // );
       dummy.updateMatrix();
       mesh.current.setMatrixAt(i, dummy.matrix);
     });
