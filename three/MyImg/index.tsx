@@ -26,8 +26,8 @@ const MyImg = ({
   ]);
 
   useFrame(() => {
-    planeRef.current.rotation.x = mouse.current[0] * -0.0001;
-    planeRef.current.rotation.y = mouse.current[1] * -0.0001;
+    planeRef.current.rotation.x = mouse.current[1] * 0.0001;
+    planeRef.current.rotation.y = mouse.current[0] * 0.0001;
     ref.current.time += timeFactor;
     if (!hovered) {
       if (ref.current.progress < 1) {
