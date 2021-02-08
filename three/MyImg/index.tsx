@@ -8,10 +8,12 @@ import { useState } from "react";
 
 const MyImg = ({
   mouse,
+  page,
 }: {
   mouse: {
     current: number[];
   };
+  page: number;
 }) => {
   const ref = useRef<any>();
   const planeRef = useRef<any>();
@@ -25,6 +27,13 @@ const MyImg = ({
   ]);
 
   useFrame(() => {
+    // console.log(planeRef.current.position.y);
+    // console.log(size.height);
+    if (planeRef.current.position.y < viewport.height * page) {
+      planeRef.current.position.y += 1;
+    } else if (planeRef.current.position.y > viewport.height * page) {
+      planeRef.current.position.y -= 1;
+    }
     planeRef.current.rotation.x = mouse.current[1] * 0.0001;
     planeRef.current.rotation.y = mouse.current[0] * 0.0001;
     ref.current.time += timeFactor;

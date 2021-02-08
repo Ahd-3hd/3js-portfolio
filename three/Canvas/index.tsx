@@ -39,7 +39,7 @@ const CanvasComponent = ({ page }: { page: number }) => {
       <Light />
       <Particles mouse={mouse} page={page} />
       <Suspense fallback={null}>
-        <MyImg mouse={mouse} />
+        <MyImg mouse={mouse} page={page} />
       </Suspense>
     </Canvas>
   );
