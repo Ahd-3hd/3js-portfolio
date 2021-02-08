@@ -2,7 +2,6 @@ import styles from "../styles/Home.module.scss";
 import dynamic from "next/dynamic";
 import Title from "../components/Title";
 import { useGesture } from "react-use-gesture";
-import { animated } from "react-spring";
 import { useState } from "react";
 
 const Canvas = dynamic(import("../three/Canvas"), { ssr: false });
@@ -22,7 +21,7 @@ export default function Home() {
   return (
     <div className={styles.container} {...bind()}>
       <Canvas page={page} />
-      <Title />
+      <Title page={page} />
     </div>
   );
 }
