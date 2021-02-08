@@ -20,7 +20,7 @@ const Particles = ({
     for (let i = 0; i < 500; i++) {
       const t = Math.random() * 100;
       const factor = 20 + Math.random() * 100;
-      const speed = 0.01 + Math.random() / 200;
+      const speed = 0.02 + Math.random() / 200;
       const xFactor = -50 + Math.random() * 100;
       const yFactor = -50 + Math.random() * 100;
       const zFactor = -50 + Math.random() * 100;
@@ -34,6 +34,7 @@ const Particles = ({
     const mouseY = -mouse.current[1] / aspect;
     if (mesh.current.rotation.y < page) mesh.current.rotation.y += 0.01;
     if (mesh.current.rotation.y > page) mesh.current.rotation.y -= 0.01;
+
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
       t = particle.t += speed / 10;
