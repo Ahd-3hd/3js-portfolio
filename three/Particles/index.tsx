@@ -33,6 +33,7 @@ const Particles = ({
     const mouseX = mouse.current[0] / aspect;
     const mouseY = -mouse.current[1] / aspect;
     if (mesh.current.rotation.y < page) mesh.current.rotation.y += 0.01;
+    if (mesh.current.rotation.y > page) mesh.current.rotation.y -= 0.01;
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
       t = particle.t += speed / 10;
