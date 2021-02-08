@@ -1,9 +1,22 @@
-import { Canvas } from "react-three-fiber";
-// import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame } from "react-three-fiber";
+import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import Particles from "../Particles";
 import Light from "../Light";
 import { useRef, useCallback, Suspense } from "react";
 import styles from "../../styles/Home.module.scss";
+
+const Camera = () => {
+  const cameraRef = useRef<any>(0);
+  useFrame(() => {});
+  return (
+    <PerspectiveCamera
+      makeDefault
+      fov={60}
+      position={[0, 0, 80]}
+      ref={cameraRef}
+    />
+  );
+};
 
 import MyImg from "../MyImg";
 const CanvasComponent = ({ page }: { page: number }) => {
@@ -17,13 +30,14 @@ const CanvasComponent = ({ page }: { page: number }) => {
   return (
     <Canvas
       onMouseMove={onMouseMove}
-      camera={{ fov: 60, position: [0, 0, 80] }}
+      // camera={{ fov: 60, position: [0, 0, 80] }}
       colorManagement={true}
       className={styles.canvas}
     >
+      <Camera />
       {/* <OrbitControls /> */}
       <Light />
-      <Particles mouse={mouse} />
+      <Particles mouse={mouse} page={page} />
       <Suspense fallback={null}>
         <MyImg mouse={mouse} />
       </Suspense>

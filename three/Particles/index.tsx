@@ -3,10 +3,12 @@ import { useFrame, useThree } from "react-three-fiber";
 import * as THREE from "three";
 const Particles = ({
   mouse,
+  page,
 }: {
   mouse: {
     current: number[];
   };
+  page: number;
 }) => {
   const mesh = useRef<any>();
   const { size, viewport } = useThree();
@@ -30,6 +32,7 @@ const Particles = ({
   useFrame(() => {
     const mouseX = mouse.current[0] / aspect;
     const mouseY = -mouse.current[1] / aspect;
+    if (mesh.current.rotation.y < page) mesh.current.rotation.y += 0.01;
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
       t = particle.t += speed / 10;
@@ -56,11 +59,7 @@ const Particles = ({
       );
       dummy.scale.set(s, s, s);
       dummy.rotation.set(s * 5, s * 5, s * 5);
-      // dummy.position.set(
-      //   (dummy.position.x + mouseX) * factor,
-      //   (dummy.position.y + mouseY) * factor,
-      //   0
-      // );
+
       dummy.updateMatrix();
       mesh.current.setMatrixAt(i, dummy.matrix);
     });
