@@ -3,12 +3,10 @@ import { shaderMaterial } from "@react-three/drei";
 
 const ImageFadeMaterial = shaderMaterial(
   {
-    effectFactor: 1.2,
-    dispFactor: 0,
     myimg: undefined,
     displacement: undefined,
     time: 0,
-    progress: 0.1,
+    progress: 0,
   },
   `varying vec2 vUv;
       void main() {
