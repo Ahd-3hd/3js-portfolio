@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useLoader, useFrame, useThree } from "react-three-fiber";
 import { TextureLoader } from "three";
 import "./ImageShaderMaterial";
-import { a } from "react-spring/three";
 import { useGesture } from "react-use-gesture";
 import { useState } from "react";
 
@@ -60,7 +59,7 @@ const MyImg = ({
     },
   });
   return (
-    <a.mesh
+    <mesh
       {...bind()}
       position={[(viewport.width / aspect) * 2, 0, 0]}
       ref={planeRef}
@@ -75,7 +74,7 @@ const MyImg = ({
         displacement={displacement}
         time={timeFactor}
       />
-    </a.mesh>
+    </mesh>
   );
 };
 
