@@ -13,7 +13,7 @@ const Title = () => {
   const animation = useSpring({
     transform: show ? "translate(10%, 0%)" : "translate(10%, 500%)",
     opacity: show ? 1 : 0,
-    config: config.molasses,
+    config: { ...config.wobbly, friction: 20, tension: 50 },
   });
   return (
     <div className={styles.container}>
