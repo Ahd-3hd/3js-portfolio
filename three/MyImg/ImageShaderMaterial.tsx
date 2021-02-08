@@ -29,7 +29,7 @@ const ImageFadeMaterial = shaderMaterial(
         vec2 displacedUV =  vec2(vUv.x + 0.01 * sin(vUv.y*15.0 + time / 4.0),vUv.y);
        
     
-        displacedUV.y = mix(vUv.y,displace.r - 0.2, vUv.x * 0.4 * sin(vUv.y * 15.0 + time / 4.0) * progress);
+        displacedUV.y = mix(vUv.y,displace.r - 0.1, vUv.x * 0.09 * sin(vUv.x * 1000.0 + time / 5.0) * progress);
     
         vec4 color = texture2D(myimg,displacedUV);
     
