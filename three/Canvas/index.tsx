@@ -1,12 +1,12 @@
 import { Canvas } from "react-three-fiber";
-import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
+// import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import Particles from "../Particles";
 import Light from "../Light";
 import { useRef, useCallback, Suspense } from "react";
 import styles from "../../styles/Home.module.scss";
 
 import MyImg from "../MyImg";
-const CanvasComponent = () => {
+const CanvasComponent = ({ page }: { page: number }) => {
   const mouse = useRef<any>([0, 0]);
   const onMouseMove = useCallback(
     ({ clientX: x, clientY: y }) =>
@@ -21,7 +21,7 @@ const CanvasComponent = () => {
       colorManagement={true}
       className={styles.canvas}
     >
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <Light />
       <Particles mouse={mouse} />
       <Suspense fallback={null}>

@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import { animated, useSpring, config } from "react-spring";
 import { useState, useEffect } from "react";
 
-const Title = () => {
+const Title = ({ page }: { page: number }) => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     setTimeout(() => {

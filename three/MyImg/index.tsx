@@ -19,7 +19,6 @@ const MyImg = ({
   const [timeFactor, setTimeFactor] = useState(0.1);
   const [hovered, setHovered] = useState(false);
   const aspect = size.width / viewport.width;
-  console.log(aspect);
   const [texture1, displacement] = useLoader(TextureLoader, [
     "/img/ahd.png",
     "/img/displacementimg.png",
@@ -42,7 +41,6 @@ const MyImg = ({
 
   const bind = useGesture({
     onHover: (state) => {
-      console.log(state);
       if (state.hovering) {
         setHovered(true);
         setTimeFactor(0);
