@@ -64,7 +64,10 @@ const MyImg = ({
       position={[(viewport.width / aspect) * 2, 0, 0]}
       ref={planeRef}
     >
-      <planeBufferGeometry attach="geometry" args={[30, 30]} />
+      <planeBufferGeometry
+        attach="geometry"
+        args={[(viewport.width / aspect) * 2, (viewport.width / aspect) * 2]}
+      />
       {/** For some reason typescript doesnt recoginize imageFadeMaterial, but it does work i promise */}
       {/*@ts-ignore*/}
       <imageFadeMaterial

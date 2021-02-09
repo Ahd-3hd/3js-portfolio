@@ -10,21 +10,21 @@ const Fox = ({ page }) => {
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   useEffect(() => {
-    actions.Run.play();
+    actions.Survey.play();
     console.log(animations);
   }, []);
   useFrame(() => {
     if (page === 1) {
+      actions.Survey.play();
+      actions.Walk.play();
       if (group.current.position.x < (viewport.width / aspect) * 3)
         group.current.position.x += 0.5;
       if (group.current.rotation.y < -0.6) group.current.rotation.y += 0.01;
-      if (group.current.position.z < 0) group.current.position.z += 1;
-      if (group.current.position.x >= (viewport.width / aspect) * 3) {
-        actions.Run.stop();
-        actions.Survey.play();
-      }
+      // if (group.current.position.z < 0) group.current.position.z += 1;
+      // if (group.current.position.x >= (viewport.width / aspect) * 3) {
+      // }
       if (group.current.position.y > viewport.height / aspect / -1) {
-        group.current.position.y -= 0.1;
+        group.current.position.y -= 0.3;
       }
 
       // if (group.current.rotation.y < 20) group.current.position.x += 0.5;
@@ -38,8 +38,16 @@ const Fox = ({ page }) => {
         ref={group}
         dispose={null}
         rotation={[0, -Math.PI / 4, 0]}
-        position={[-35, (viewport.height / aspect) * 0.2, -35]}
-        scale={[0.3, 0.3, 0.3]}
+        position={[
+          (viewport.width / aspect) * -2,
+          (viewport.height / aspect) * 0.2,
+          -35,
+        ]}
+        scale={[
+          (viewport.width / aspect) * 0.03,
+          (viewport.width / aspect) * 0.03,
+          (viewport.width / aspect) * 0.03,
+        ]}
       >
         <primitive object={nodes._rootJoint} />
         <skinnedMesh
