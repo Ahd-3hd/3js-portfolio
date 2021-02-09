@@ -44,7 +44,7 @@ const CanvasComponent = ({ page }: { page: number }) => {
         <MyImg mouse={mouse} page={page} />
       </Suspense>
       <Suspense fallback={null}>
-        <Fox />
+        <Fox page={page} />
       </Suspense>
     </Canvas>
   );
