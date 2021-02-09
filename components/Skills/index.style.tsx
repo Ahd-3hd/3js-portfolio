@@ -11,26 +11,34 @@ export const Container = styled(animated.div)`
   flex-direction: column;
   justify-content: center;
   padding-left: 3vw;
-  pointer-events: none;
-`;
-export const SkillsContainer = styled.div`
-  position: relative;
-  border: 1px solid red;
-  overflow: hidden;
+  /* pointer-events: none; */
+  transform-origin: top left;
 `;
 export const Title = styled.h2`
-  font-size: 4vw;
+  font-size: calc(32px + 0.7vw);
   color: #333333;
   span {
     color: rgb(16, 161, 180);
   }
 `;
+export const SkillsContainer = styled.div`
+  overflow: hidden;
+`;
 
 export const SkillP = styled.p<{ position: number }>`
-  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  width: 200px;
+  font-size: calc(16px + 0.7vw);
   font-weight: bold;
   color: rgb(16, 161, 180);
   position: relative;
+  transform: scale(${({ index }) => 0.45 + Math.abs(Math.cos(index))});
   top: ${({ position }) => -position / 7}%;
-  left: ${({ position }) => position * 2}%;
+  left: ${({ position }) => position * 2.5}%;
+  /* border: 2px solid red; */
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  :hover {
+    transform: scale(1.5);
+  }
 `;
