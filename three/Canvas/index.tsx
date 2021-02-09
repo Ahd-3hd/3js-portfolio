@@ -4,7 +4,7 @@ import Particles from "../Particles";
 import Light from "../Light";
 import { useRef, useCallback, Suspense } from "react";
 import styles from "../../styles/Home.module.scss";
-import Phone from "../Phone";
+import Phone from "../Fox";
 
 const Camera = () => {
   const cameraRef = useRef<any>(0);
