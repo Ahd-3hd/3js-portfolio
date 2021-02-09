@@ -4,7 +4,7 @@ import Particles from "../Particles";
 import Light from "../Light";
 import { useRef, useCallback, Suspense } from "react";
 import styles from "../../styles/Home.module.scss";
-import Phone from "../Fox";
+import Fox from "../Fox";
 
 const Camera = () => {
   const cameraRef = useRef<any>(0);
@@ -30,9 +30,10 @@ const CanvasComponent = ({ page }: { page: number }) => {
 
   return (
     <Canvas
+      concurrent
       onMouseMove={onMouseMove}
       // camera={{ fov: 60, position: [0, 0, 80] }}
-      colorManagement={true}
+      colorManagement
       className={styles.canvas}
     >
       <Camera />
@@ -43,7 +44,7 @@ const CanvasComponent = ({ page }: { page: number }) => {
         <MyImg mouse={mouse} page={page} />
       </Suspense>
       <Suspense fallback={null}>
-        <Phone />
+        <Fox />
       </Suspense>
     </Canvas>
   );
