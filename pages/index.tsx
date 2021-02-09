@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Title from "../components/Title";
 import { useGesture } from "react-use-gesture";
 import { useState } from "react";
+import Skills from "../components/Skills";
 
 const Canvas = dynamic(import("../three/Canvas"), { ssr: false });
 
@@ -22,6 +23,7 @@ export default function Home() {
     <div className={styles.container} {...bind()}>
       <Canvas page={page} />
       <Title page={page} />
+      <Skills />
     </div>
   );
 }
