@@ -11,10 +11,7 @@ const Fox = ({ page }) => {
   const aspect = size.width / viewport.width;
   useEffect(() => {
     actions.Run.play();
-    actions.Run.clampWhenFinished = true;
-    console.log(aspect);
-    console.log(size);
-    console.log(viewport.width);
+    console.log(animations);
   }, []);
   useFrame(() => {
     if (page === 1) {
