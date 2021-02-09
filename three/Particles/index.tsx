@@ -59,6 +59,7 @@ const Particles = ({
           Math.cos((t / 10) * factor) +
           (Math.sin(t * 3) * factor) / 10
       );
+
       dummy.scale.set(s, s, s);
       dummy.rotation.set(s * 5, s * 5, s * 5);
 
