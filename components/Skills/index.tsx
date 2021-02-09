@@ -1,6 +1,10 @@
+import { useSpring } from "react-spring";
 import { Container, Title, SkillP, SkillsContainer } from "./index.style";
 
-const Skills = () => {
+const Skills = ({ page }: { page: number }) => {
+  const animation = useSpring({
+    transform: page === 1 ? `translateY(0%)` : `translateY(200%)`,
+  });
   const skills = [
     "ReactJS",
     "NodeJS",
@@ -17,7 +21,7 @@ const Skills = () => {
     "HTML",
   ];
   return (
-    <Container>
+    <Container style={animation}>
       <Title>
         Skills <span>&</span> Techs
       </Title>
@@ -25,7 +29,7 @@ const Skills = () => {
         {skills.map((skill, i) => (
           <SkillP
             key={skill}
-            index={9 + Math.PI * Math.sin(i) * -3 * Math.cos(i / 2)}
+            position={9 + Math.PI * Math.sin(i) * -3 * Math.cos(i / 2)}
           >
             {skill}
           </SkillP>

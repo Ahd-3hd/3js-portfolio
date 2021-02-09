@@ -23,7 +23,7 @@ export default function Home() {
     <div className={styles.container} {...bind()}>
       <Canvas page={page} />
       <Title page={page} />
-      <Skills />
+      <Skills page={page} />
     </div>
   );
 }

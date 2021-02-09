@@ -3,7 +3,7 @@ import { animated, useSpring } from "react-spring";
 
 const Title = ({ page }: { page: number }) => {
   const animation = useSpring({
-    transform: `translateY(${page * 100}%)`,
+    transform: page === 0 ? `translateY(0%)` : `translateY(200%)`,
   });
   return (
     <animated.div className={styles.container} style={animation}>
