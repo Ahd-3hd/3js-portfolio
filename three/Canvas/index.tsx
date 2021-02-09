@@ -4,6 +4,7 @@ import Particles from "../Particles";
 import Light from "../Light";
 import { useRef, useCallback, Suspense } from "react";
 import styles from "../../styles/Home.module.scss";
+import Phone from "../Phone";
 
 const Camera = () => {
   const cameraRef = useRef<any>(0);
@@ -40,6 +41,9 @@ const CanvasComponent = ({ page }: { page: number }) => {
       <Particles mouse={mouse} page={page} />
       <Suspense fallback={null}>
         <MyImg mouse={mouse} page={page} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Phone />
       </Suspense>
     </Canvas>
   );
