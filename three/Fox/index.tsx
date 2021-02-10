@@ -17,6 +17,7 @@ const Fox = ({ page }) => {
     if (page === 1) {
       actions.Survey.play();
       actions.Walk.play();
+      actions.Run.stop();
       if (group.current.position.x < 0.5 * (viewport.width / aspect) * 6)
         group.current.position.x += 1;
       if (group.current.rotation.y < -0.6) group.current.rotation.y += 0.01;
@@ -26,6 +27,7 @@ const Fox = ({ page }) => {
       if (group.current.position.y > viewport.height / aspect / -1) {
         group.current.position.y -= 0.9;
       }
+
       // if (group.current.rotation.y < 20) group.current.position.x += 0.5;
       // if (group.current.position.x > 1) group.current.position.x -= 1;
     }
