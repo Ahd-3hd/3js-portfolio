@@ -42,6 +42,15 @@ const Fox = ({ page }) => {
         group.current.position.y -= 0.3;
       }
     }
+    if (page === 4) {
+      if (group.current.position.x > -60) {
+        group.current.position.x -= 1;
+
+        if (group.current.rotation.y < 0.8) {
+          group.current.rotation.y += 0.05;
+        }
+      }
+    }
   });
   return (
     <>
