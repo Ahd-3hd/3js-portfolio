@@ -4,6 +4,7 @@ import Title from "../components/Title";
 import { useGesture } from "react-use-gesture";
 import { useState } from "react";
 import Skills from "../components/Skills";
+import Testing from "../components/Other";
 
 const Canvas = dynamic(import("../three/Canvas"), { ssr: false });
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Canvas page={page} />
       <Title page={page} />
       <Skills page={page} />
+      <Testing page={page} />
     </div>
   );
 }

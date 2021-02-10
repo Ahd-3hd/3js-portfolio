@@ -26,9 +26,19 @@ const Fox = ({ page }) => {
       if (group.current.position.y > viewport.height / aspect / -1) {
         group.current.position.y -= 0.9;
       }
-
       // if (group.current.rotation.y < 20) group.current.position.x += 0.5;
       // if (group.current.position.x > 1) group.current.position.x -= 1;
+    }
+    if (page === 2) {
+      actions.Survey.stop();
+      actions.Walk.stop();
+      actions.Run.play();
+      if (group.current.scale.x < 0.7) {
+        group.current.scale.x += 0.01;
+        group.current.scale.y += 0.01;
+        group.current.scale.z += 0.01;
+        group.current.position.y -= 0.3;
+      }
     }
   });
   return (
