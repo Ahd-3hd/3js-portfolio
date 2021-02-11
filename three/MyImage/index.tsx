@@ -28,13 +28,13 @@ const MyImg = ({
   useFrame(() => {
     // console.log(planeRef.current.position.y);
     // console.log(size.height);
-    if (planeRef.current.position.y < viewport.height * page) {
-      planeRef.current.position.y += 1;
-    } else if (planeRef.current.position.y > viewport.height * page) {
-      planeRef.current.position.y -= 1;
-    }
-    planeRef.current.rotation.x = mouse.current[1] * 0.0001;
-    planeRef.current.rotation.y = mouse.current[0] * 0.0001;
+    // if (planeRef.current.position.y < viewport.height * page) {
+    //   planeRef.current.position.y += 1;
+    // } else if (planeRef.current.position.y > viewport.height * page) {
+    //   planeRef.current.position.y -= 1;
+    // }
+    // planeRef.current.rotation.x = mouse.current[1] * 0.0001;
+    // planeRef.current.rotation.y = mouse.current[0] * 0.0001;
     ref.current.time += timeFactor;
     if (!hovered) {
       if (ref.current.progress < 1) {
@@ -61,12 +61,19 @@ const MyImg = ({
   return (
     <mesh
       {...bind()}
-      position={[(viewport.width / aspect) * 2, 0, 0]}
+      position={[
+        size.width > 1024 ? aspect * 3 : aspect * 0.001,
+        aspect,
+        size.width * 0.000001,
+      ]}
       ref={planeRef}
     >
       <planeBufferGeometry
         attach="geometry"
-        args={[(viewport.width / aspect) * 2, (viewport.width / aspect) * 2]}
+        args={[
+          size.width < 1024 ? size.width * 0.09 : aspect * 7,
+          size.width < 1024 ? size.width * 0.09 : aspect * 7,
+        ]}
       />
       {/** For some reason typescript doesnt recoginize imageFadeMaterial, but it does work i promise */}
       {/*@ts-ignore*/}
