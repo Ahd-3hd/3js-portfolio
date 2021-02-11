@@ -3,6 +3,8 @@ import { OrbitControls, Sky, Stars } from "@react-three/drei";
 import Light from "../Light";
 import { useRef, useCallback, Suspense } from "react";
 import MyImg from "../MyImage";
+import Particles from "../Particles";
+import Fox from "../Fox";
 
 const CanvasComponent = ({ page }: { page: number }) => {
   const mouse = useRef<any>([0, 0]);
@@ -28,7 +30,9 @@ const CanvasComponent = ({ page }: { page: number }) => {
       <Light />
       <Suspense fallback={null}>
         <MyImg mouse={mouse} page={page} />
+        {/* <Fox page={page} /> */}
       </Suspense>
+      <Particles mouse={mouse} page={page} />
     </Canvas>
   );
 };

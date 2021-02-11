@@ -5,7 +5,7 @@ export const Container = styled.header`
   display: flex;
   padding: 1rem;
   align-items: flex-end;
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     align-items: stretch;
   }
 `;
