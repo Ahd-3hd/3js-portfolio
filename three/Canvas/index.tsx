@@ -6,7 +6,13 @@ import MyImg from "../MyImage";
 import Particles from "../Particles";
 import Fox from "../Fox";
 
-const CanvasComponent = ({ page }: { page: number }) => {
+const CanvasComponent = ({
+  page,
+  scrollY,
+}: {
+  page: number;
+  scrollY: number;
+}) => {
   const mouse = useRef<any>([0, 0]);
   const onMouseMove = useCallback(
     ({ clientX: x, clientY: y }) =>
@@ -29,7 +35,7 @@ const CanvasComponent = ({ page }: { page: number }) => {
     >
       <Light />
       <Suspense fallback={null}>
-        <MyImg mouse={mouse} page={page} />
+        <MyImg mouse={mouse} page={page} scrollY={scrollY} />
         {/* <Fox page={page} /> */}
       </Suspense>
       <Particles mouse={mouse} page={page} />

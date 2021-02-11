@@ -1,22 +1,31 @@
 import styles from "../styles/Home.module.scss";
 import dynamic from "next/dynamic";
 import { useGesture } from "react-use-gesture";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
+import Tech from "../components/Tech";
 
 const Canvas = dynamic(import("../three/Canvas"), { ssr: false });
 
 export default function Home() {
   const [page, setPage] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScrollY(window.scrollY);
+    });
+  }, []);
+
   const bind = useGesture({
     onWheel: (state) => {
       if (state.first && state.intentional) {
         state.direction[1] > 0
           ? setPage((prev) => prev + 1)
           : setPage((prev) => prev - 1);
-        console.log(page);
+        // console.log(page);
       }
     },
   });
@@ -25,8 +34,9 @@ export default function Home() {
       <Layout>
         <Navbar />
         <Header />
+        <Tech />
       </Layout>
-      <Canvas page={page} />
+      <Canvas page={page} scrollY={scrollY} />
     </div>
   );
 }
