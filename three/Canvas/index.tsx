@@ -5,6 +5,7 @@ import { useRef, useCallback, Suspense } from "react";
 import MyImg from "../MyImage";
 import Particles from "../Particles";
 import Fox from "../Fox";
+import Skills from "../Skills";
 
 const CanvasComponent = ({
   page,
@@ -34,11 +35,13 @@ const CanvasComponent = ({
       }}
     >
       <Light />
+      {/* <OrbitControls /> */}
       <Suspense fallback={null}>
         <MyImg mouse={mouse} page={page} scrollY={scrollY} />
         {/* <Fox page={page} /> */}
       </Suspense>
       <Particles mouse={mouse} page={page} />
+      <Skills scrollY={scrollY} />
     </Canvas>
   );
 };
